@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C51D0C7D-6040-4526-B76B-459BD9F77A08}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Прием</RootNamespace>
+    <AssemblyName>Прием</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>example.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.CoreScanner">
+      <HintPath>..\..\TestScanQR\TestScanQR\bin\Debug\Interop.CoreScanner.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ErrorCollector.cs" />
+    <Compile Include="Import\EventType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Import\EventType.Designer.cs">
+      <DependentUpon>EventType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Import\ImportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Import\ImportData.Designer.cs">
+      <DependentUpon>ImportData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\INIFile.cs" />
+    <Compile Include="Modules\NominalTasks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\NominalTasks.Designer.cs">
+      <DependentUpon>NominalTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\NewNominalTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\NewNominalTask.Designer.cs">
+      <DependentUpon>NewNominalTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScanNominalTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScanNominalTask.Designer.cs">
+      <DependentUpon>ScanNominalTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\MainSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\MainSettings.Designer.cs">
+      <DependentUpon>MainSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Navigation\NavigationPanel.Designer.cs">
+      <DependentUpon>NavigationPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Navigation\NavigationBar.Designer.cs">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgramSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modules\ScanControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\ScanControl.Designer.cs">
+      <DependentUpon>ScanControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loaders\SplashWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loaders\SplashWindow.Designer.cs">
+      <DependentUpon>SplashWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ScanFields.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\ScanFields.Designer.cs">
+      <DependentUpon>ScanFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetupFields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetupFields.Designer.cs">
+      <DependentUpon>SetupFields.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Import\EventType.resx">
+      <DependentUpon>EventType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Import\ImportData.resx">
+      <DependentUpon>ImportData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\NominalTasks.resx">
+      <DependentUpon>NominalTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\NewNominalTask.resx">
+      <DependentUpon>NewNominalTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScanNominalTask.resx">
+      <DependentUpon>ScanNominalTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\MainSettings.resx">
+      <DependentUpon>MainSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\NavigationPanel.resx">
+      <DependentUpon>NavigationPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\NavigationBar.resx">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Modules\ScanControl.resx">
+      <DependentUpon>ScanControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loaders\SplashWindow.resx">
+      <DependentUpon>SplashWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ScanFields.resx">
+      <DependentUpon>ScanFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetupFields.resx">
+      <DependentUpon>SetupFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prolongation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Qr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="example.ico" />
+    <None Include="Resources\icon-error.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

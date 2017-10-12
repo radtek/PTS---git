@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D03C5130-547C-47C0-98FE-37361778B7BD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Задание</RootNamespace>
+    <AssemblyName>Задание</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>опубликовать\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconQR.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cyriller">
+      <HintPath>C:\Users\Amitu\Desktop\АПК Задание\Задание\bin\Debug\Cyriller.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Drawing, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPdfViewer.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocX">
+      <HintPath>C:\Users\Amitu\Desktop\АПК Задание\Задание\bin\Debug\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="fastJSON, Version=2.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\fastJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer">
+      <HintPath>..\packages\PdfiumViewer.2.12.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc">
+      <HintPath>C:\Users\Amitu\Downloads\Spire.Office_Platinum_2.15.4_Downloadly.ir\Spire.Office Platinum 2.15.4\spire.office_2.15.4 hotfix\BIN\NET4.0\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License">
+      <HintPath>C:\Users\Amitu\Downloads\Spire.Office_Platinum_2.15.4_Downloadly.ir\Spire.Office Platinum 2.15.4\spire.office_2.15.4 hotfix\BIN\NET4.0\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Designer, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SQLite.Designer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>C:\Users\Amitu\Desktop\АПК Задание\Задание\bin\Debug\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlankControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BlankControl.Designer.cs">
+      <DependentUpon>BlankControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Address.cs" />
+    <Compile Include="Common\AddressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\AddressForm.Designer.cs">
+      <DependentUpon>AddressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loaders\DocLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loaders\DocLoading.Designer.cs">
+      <DependentUpon>DocLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loaders\Printing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loaders\Printing.Designer.cs">
+      <DependentUpon>Printing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\ChangeDativeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\ChangeDativeForm.Designer.cs">
+      <DependentUpon>ChangeDativeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ModifyInMemory.cs" />
+    <Compile Include="Navigation\ControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Navigation\ControlPanel.Designer.cs">
+      <DependentUpon>ControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Crypt.cs" />
+    <Compile Include="Common\ErrorCollector.cs" />
+    <Compile Include="Loaders\Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loaders\Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Navigation\NavigationBar.Designer.cs">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Navigation\NavigationPanel.Designer.cs">
+      <DependentUpon>NavigationPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\RegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\RegistrationForm.Designer.cs">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Preview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Preview.Designer.cs">
+      <DependentUpon>Preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\PrintResultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\PrintResultDialog.Designer.cs">
+      <DependentUpon>PrintResultDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ReferenceMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ReferenceMenu.Designer.cs">
+      <DependentUpon>ReferenceMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reference.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Reference.Designer.cs">
+      <DependentUpon>Reference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ReferenceSaveDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ReferenceSaveDialog.Designer.cs">
+      <DependentUpon>ReferenceSaveDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ReferenceMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ReferenceMode.Designer.cs">
+      <DependentUpon>ReferenceMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ReferenceApprove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ReferenceApprove.Designer.cs">
+      <DependentUpon>ReferenceApprove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ReportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ReportDialog.Designer.cs">
+      <DependentUpon>ReportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ApplyTheme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\ApplyTheme.Designer.cs">
+      <DependentUpon>ApplyTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\BaseEventSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\BaseEventSettings.Designer.cs">
+      <DependentUpon>BaseEventSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\EventSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\EventSettings.Designer.cs">
+      <DependentUpon>EventSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\HeadAcceptSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\HeadAcceptSettings.Designer.cs">
+      <DependentUpon>HeadAcceptSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\HeadApproveSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\HeadApproveSettings.Designer.cs">
+      <DependentUpon>HeadApproveSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\KeyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\KeyControl.Designer.cs">
+      <DependentUpon>KeyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\MarkersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\MarkersControl.Designer.cs">
+      <DependentUpon>MarkersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\PersonalSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\PersonalSettings.Designer.cs">
+      <DependentUpon>PersonalSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\SettingsManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\SettingsManager.Designer.cs">
+      <DependentUpon>SettingsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loaders\SplashWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loaders\SplashWindow.Designer.cs">
+      <DependentUpon>SplashWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\UserSettings.cs" />
+    <Compile Include="Modules\Task.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\Task.Designer.cs">
+      <DependentUpon>Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\TaskModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\TaskModeForm.Designer.cs">
+      <DependentUpon>TaskModeForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BlankControl.resx">
+      <DependentUpon>BlankControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\AddressForm.resx">
+      <DependentUpon>AddressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loaders\DocLoading.resx">
+      <DependentUpon>DocLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loaders\Printing.resx">
+      <DependentUpon>Printing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\ChangeDativeForm.resx">
+      <DependentUpon>ChangeDativeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\ControlPanel.resx">
+      <DependentUpon>ControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loaders\Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\NavigationBar.resx">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\NavigationPanel.resx">
+      <DependentUpon>NavigationPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Preview.resx">
+      <DependentUpon>Preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\PrintResultDialog.resx">
+      <DependentUpon>PrintResultDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ReferenceMenu.resx">
+      <DependentUpon>ReferenceMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reference.resx">
+      <DependentUpon>Reference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ReferenceSaveDialog.resx">
+      <DependentUpon>ReferenceSaveDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ReferenceMode.resx">
+      <DependentUpon>ReferenceMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ReferenceApprove.resx">
+      <DependentUpon>ReferenceApprove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ReportDialog.resx">
+      <DependentUpon>ReportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\ApplyTheme.resx">
+      <DependentUpon>ApplyTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\BaseEventSettings.resx">
+      <DependentUpon>BaseEventSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\EventSettings.resx">
+      <DependentUpon>EventSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\HeadAcceptSettings.resx">
+      <DependentUpon>HeadAcceptSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\HeadApproveSettings.resx">
+      <DependentUpon>HeadApproveSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\KeyControl.resx">
+      <DependentUpon>KeyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\MarkersControl.resx">
+      <DependentUpon>MarkersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\PersonalSettings.resx">
+      <DependentUpon>PersonalSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Settings\SettingsManager.resx">
+      <DependentUpon>SettingsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loaders\SplashWindow.resx">
+      <DependentUpon>SplashWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Task.resx">
+      <DependentUpon>Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\TaskModeForm.resx">
+      <DependentUpon>TaskModeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddItem_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteList_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconQR.ico" />
+    <None Include="Resources\DrillDown.png" />
+    <None Include="Resources\DrillUp.png" />
+    <None Include="Resources\AddDocument.png" />
+    <None Include="Resources\BackToRef.png" />
+    <Content Include="x64\pdfium.dll" />
+    <Content Include="x86\pdfium.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
