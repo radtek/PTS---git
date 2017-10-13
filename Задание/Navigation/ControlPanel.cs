@@ -538,7 +538,7 @@ namespace Задание
                 {
                     Thread t = new Thread(new ThreadStart(SplashScreen));
                     t.Start();
-                    Thread.Sleep(850);
+                    Thread.Sleep(1000);
                     if (Preview.preview.pdfViewer.Document != null)
                     {
                         Preview.preview.pdfViewer.Document.Dispose();
@@ -569,7 +569,7 @@ namespace Задание
                 {
                     Thread t = new Thread(new ThreadStart(SplashPrinting));
                     t.Start();
-                    Thread.Sleep(850);
+                    Thread.Sleep(1000);
                     for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
                     {
                         Reference.reference.InsertDocX(i, Reference.reference.TotalDivisions);
@@ -593,7 +593,7 @@ namespace Задание
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
                 t.Start();
-                Thread.Sleep(850);
+                Thread.Sleep(1000);
                 for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
                 {
                     Reference.reference.InsertDocX(i, Reference.reference.TotalDivisions);
@@ -618,7 +618,7 @@ namespace Задание
                 {
                     Thread t = new Thread(new ThreadStart(SplashPrinting));
                     t.Start();
-                    Thread.Sleep(850);
+                    Thread.Sleep(1000);
                     Reference.reference.CreateReferenceDocument();
                     for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
                     {
@@ -642,7 +642,7 @@ namespace Задание
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
                 t.Start();
-                Thread.Sleep(850);
+                Thread.Sleep(1000);
                 for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
                 {
                     Document doc = new Document();
@@ -689,7 +689,7 @@ namespace Задание
                     {
                         Thread t = new Thread(new ThreadStart(SplashScreen));
                         t.Start();
-                        Thread.Sleep(850);
+                        Thread.Sleep(1000);
                         if (Preview.preview.pdfViewer.Document != null)
                         {
                             Preview.preview.pdfViewer.Document.Dispose();
@@ -724,7 +724,7 @@ namespace Задание
                 {
                     Thread t = new Thread(new ThreadStart(SplashScreen));
                     t.Start();
-                    Thread.Sleep(850);
+                    Thread.Sleep(1000);
                     Task.task.UpdateFields();
                     Task.task.UpdateDoc();
                     t.Abort();
@@ -774,7 +774,7 @@ namespace Задание
                 {
                     Thread t = new Thread(new ThreadStart(SplashScreen));
                     t.Start();
-                    Thread.Sleep(850);
+                    Thread.Sleep(1000);
                     if (Preview.preview.pdfViewer.Document != null)
                     {
                         Preview.preview.pdfViewer.Document.Dispose();
@@ -800,7 +800,7 @@ namespace Задание
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
                 t.Start();
-                Thread.Sleep(850);
+                Thread.Sleep(1000);
                 if (Preview.preview.pdfViewer.Document != null)
                 {
                     Preview.preview.pdfViewer.Document.Dispose();
@@ -821,7 +821,7 @@ namespace Задание
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
                 t.Start();
-                Thread.Sleep(850);
+                Thread.Sleep(1000);
                 if (Preview.preview.pdfViewer.Document != null)
                 {
                     Preview.preview.pdfViewer.Document.Dispose();
