@@ -46,7 +46,8 @@ namespace Задание
             pc.PaperKind = System.Drawing.Printing.PaperKind.A4Extra;
             pc.Landscape = true;
             pc.CreateDocument();
-            pc.PrintingSystemBase.ExportToRtf(Application.StartupPath + "\\Temp\\report.rtf");
+            //pc.PrintingSystemBase.ExportToRtf(Application.StartupPath + "\\Temp\\report.rtf");
+            pc.PrintingSystemBase.ExportToPdf(Application.StartupPath + "\\Temp\\tmp.pdf");
         }
 
         public void PrintPdf()

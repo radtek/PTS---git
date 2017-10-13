@@ -780,7 +780,7 @@ namespace Задание
                         Preview.preview.pdfViewer.Document.Dispose();
                     }
                     Report.report.CreateDoc();
-                    Preview.preview.DocFile = Application.StartupPath + "\\Temp\\report.rtf";
+                    //Preview.preview.DocFile = Application.StartupPath + "\\Temp\\report.rtf";
                     Preview.preview.ShowReportPreview(4);
                     btnTaskMode.Enabled = false;
                     MainForm.mainForm.navigationBar.Enabled = false;

@@ -11,6 +11,8 @@ using System.IO;
 using PdfiumViewer;
 //using Microsoft.Office.Interop.Word;
 using Spire.Doc;
+using Spire.Pdf;
+using Spire.Pdf.Graphics;
 
 namespace Задание
 {
@@ -37,7 +39,7 @@ namespace Задание
             {
                 using (var doc = new Document(docFile))
                 {
-                    doc.SaveToFile(pdfFileExport, FileFormat.PDF);
+                    doc.SaveToFile(pdfFileExport, Spire.Doc.FileFormat.PDF);
                     return true;
                 }
             }
@@ -84,6 +86,33 @@ namespace Задание
             //}
         }
 
+        private bool CreateReportPdf(string docFile, string pdfFileExport)
+        {
+            try
+            {
+                Spire.Pdf.PdfDocument pdf = new Spire.Pdf.PdfDocument();
+
+                PdfUnitConvertor unitCvtr = new PdfUnitConvertor();
+                PdfMargins margin = new PdfMargins();
+                margin.Top = unitCvtr.ConvertUnits(2.54f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
+                margin.Bottom = margin.Top;
+                margin.Left = unitCvtr.ConvertUnits(3.17f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
+                margin.Right = margin.Left;
+
+                PdfPageBase page = pdf.Pages.Add(PdfPageSize.A4, margin, PdfPageRotateAngle.RotateAngle0, PdfPageOrientation.Landscape);
+
+                String rtf = System.IO.File.ReadAllText(docFile);
+                page.LoadFromRTF(rtf, page.Canvas.ClientSize.Width, true);
+
+                pdf.SaveToFile(pdfFileExport);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public void ShowPreview(int PageIndex)
         {
             ContentIndex = PageIndex;
@@ -99,13 +128,14 @@ namespace Задание
         public void ShowReportPreview(int PageIndex)
         {
             ContentIndex = PageIndex;
-            if (File.Exists(DocFile))
-            {
-                if (CreatePdf(DocFile, System.Windows.Forms.Application.StartupPath + "\\Temp\\tmp.pdf"))
-                {
-                    pdfViewer1.DocumentFilePath = System.Windows.Forms.Application.StartupPath + "\\Temp\\tmp.pdf";
-                }
-            }
+            pdfViewer1.DocumentFilePath = System.Windows.Forms.Application.StartupPath + "\\Temp\\tmp.pdf";
+            //if (File.Exists(DocFile))
+            //{
+            //    if (CreateReportPdf(DocFile, System.Windows.Forms.Application.StartupPath + "\\Temp\\tmp.pdf"))
+            //    {
+            //        pdfViewer1.DocumentFilePath = System.Windows.Forms.Application.StartupPath + "\\Temp\\tmp.pdf";
+            //    }
+            //}
         }
 
         public void PrintPdf()

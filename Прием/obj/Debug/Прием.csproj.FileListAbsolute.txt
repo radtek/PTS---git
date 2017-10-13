@@ -82,3 +82,6 @@ D:\C# Projects\PTS\Прием\obj\Debug\Прием.NavigationPanel.resources
 D:\C# Projects\PTS\Прием\obj\Debug\Прием.NominalTasks.resources
 D:\C# Projects\PTS\Прием\obj\Debug\Прием.NewNominalTask.resources
 D:\C# Projects\PTS\Прием\obj\Debug\Прием.ScanNominalTask.resources
+D:\C# Projects\PTS - git\Прием\bin\Debug\Прием.exe.config
+D:\C# Projects\PTS - git\Прием\obj\Debug\Прием.exe
+D:\C# Projects\PTS - git\Прием\obj\Debug\Прием.pdb
