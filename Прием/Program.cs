@@ -31,7 +31,7 @@ namespace Прием
                     var thread = new Thread(new ThreadStart(SplashWIndowShow)); // Запускаем в новом потоке загрузку всех форм и дата-менеджеров
                     thread.Start();
                     Thread.Sleep(3000);
-                    var mainForm = new MainForm(thread); // Вызываем новую основную форму и передаем в нее текущий поток
+                    var mainForm = new MainForm(thread, ProgramSettings.settings[0].IsDeveloper); // Вызываем новую основную форму и передаем в нее текущий поток
                     ScanControl.scanControl.BeginScan();
                     NominalTasks.nominalTasks.FetchData();
                     MainSettings.mainSettings.LoadSettings();
@@ -73,7 +73,8 @@ namespace Прием
                 PtsServer = iniFile.GetValue("PTSCONNECT", "DataSource", (string)null),
                 PtsDataBase = iniFile.GetValue("PTSCONNECT", "InitialCatalog", (string)null),
                 PtsLogin = iniFile.GetValue("PTSCONNECT", "UserID", (string)null),
-                PtsPassword = iniFile.GetValue("PTSCONNECT", "Password", (string)null)
+                PtsPassword = iniFile.GetValue("PTSCONNECT", "Password", (string)null),
+                IsDeveloper = iniFile.GetValue("DUBUG", "ISDEVELOPER", (int)0)
             });
         }
 

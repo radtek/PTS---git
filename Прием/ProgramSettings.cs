@@ -21,5 +21,6 @@ namespace Прием
         public string PtsDataBase { get; set; }
         public string PtsLogin { get; set; }
         public string PtsPassword { get; set; }
+        public int IsDeveloper { get; set; }
     }
 }

@@ -34,6 +34,7 @@ namespace Задание
         List<Bitmap> img = new List<Bitmap>();
         List<Markers> markers = new List<Markers>();
         public List<TaskControls> controls = new List<TaskControls>();
+        string ColorPattern = "";
         #endregion
 
         #region "Load Title"
@@ -1839,18 +1840,27 @@ namespace Задание
         }
         #endregion
         #region "CheckedComboBoxEdit Validate"
+        private void ccbColorPattern_EditValueChanged(object sender, EventArgs e)
+        {
+            ColorPattern = string.Empty;
+            foreach (var item in ccbColorPattern.Properties.Items.GetCheckedValues().ToArray())
+            {
+                ColorPattern += item.ToString() + "|";
+            }
+        }
+
         private void ccbColorPattern_Popup(object sender, EventArgs e)
         {
-            var popup = (IPopupControl)sender;
-            var control = popup.PopupWindow.Controls.OfType<PopupContainerControl>().First().Controls.OfType<CheckedListBoxControl>().First();
-            control.ItemCheck += control_ItemCheck;
+            //var popup = (IPopupControl)sender;
+            //var control = popup.PopupWindow.Controls.OfType<PopupContainerControl>().First().Controls.OfType<CheckedListBoxControl>().First();
+            //control.ItemCheck += control_ItemCheck;
         }
 
         int j = 1;
         private void control_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            var checkedListBoxControl = (CheckedListBoxControl)sender;
-            var current = checkedListBoxControl.Items[e.Index];
+            //var checkedListBoxControl = (CheckedListBoxControl)sender;
+            //var current = checkedListBoxControl.Items[e.Index];
 
             //if (e.State == CheckState.Checked)
             //{
@@ -2047,7 +2057,7 @@ namespace Задание
             markers.Find(x => x.Tag == "{81}").Value = cbColorCrimeTarget.Text.Trim(); markers.Find(x => x.Tag == "{81}").ValueDative = cbColorCrimeTarget.Text.Trim();
             markers.Find(x => x.Tag == "{82}").Value = cbColorCrimePlace.Text.Trim(); markers.Find(x => x.Tag == "{82}").ValueDative = cbColorCrimePlace.Text.Trim();
             markers.Find(x => x.Tag == "{83}").Value = cbColorRoleObject.Text.Trim(); markers.Find(x => x.Tag == "{83}").ValueDative = cbColorRoleObject.Text.Trim();
-            markers.Find(x => x.Tag == "{84}").Value = ccbColorPattern.Text.Trim(); markers.Find(x => x.Tag == "{84}").ValueDative = ccbColorPattern.Text.Trim();
+            markers.Find(x => x.Tag == "{84}").Value = ColorPattern; markers.Find(x => x.Tag == "{84}").ValueDative = ColorPattern;
             markers.Find(x => x.Tag == "{85}").Value = tbDocumentSerialNo.Text.Trim(); markers.Find(x => x.Tag == "{85}").ValueDative = tbDocumentSerialNo.Text.Trim();
             markers.Find(x => x.Tag == "{86}").Value = tbDocumentWorkStation.Text.Trim(); markers.Find(x => x.Tag == "{86}").ValueDative = tbDocumentWorkStation.Text.Trim();
             markers.Find(x => x.Tag == "{87}").Value = tbDocumentAuthor.Text.Trim(); markers.Find(x => x.Tag == "{87}").ValueDative = tbDocumentAuthor.Text.Trim();
@@ -2365,87 +2375,90 @@ namespace Задание
         public void UpdateForValidate()
         {
             controls.Clear();
-            //controls.Add(new TaskControls { control = cbHeadApproveSurname, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadApproveName, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadApproveSecondName, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadApprovePosition, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadApproveTitle, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptSurname, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptName, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptSecondName, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptPosition, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptTitle, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptDivision, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAcceptService, Flag = false });
-            //controls.Add(new TaskControls { control = tbHeadAuthorSurname, Flag = false });
-            //controls.Add(new TaskControls { control = tbHeadAuthorName, Flag = false });
-            //controls.Add(new TaskControls { control = tbHeadAuthorSecondName, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAuthorPosition, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAuthorTitle, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAuthorDivision, Flag = false });
-            //controls.Add(new TaskControls { control = cbHeadAuthorService, Flag = false });
-            //controls.Add(new TaskControls { control = tbAuthorSurname, Flag = false });
-            //controls.Add(new TaskControls { control = tbAuthorName, Flag = false });
-            //controls.Add(new TaskControls { control = tbAuthorSecondName, Flag = false });
-            //controls.Add(new TaskControls { control = cbAuthorPosition, Flag = false });
-            //controls.Add(new TaskControls { control = cbAuthorTitle, Flag = false });
-            //controls.Add(new TaskControls { control = tbAuthorPhone, Flag = false });
-            //controls.Add(new TaskControls { control = cbAuthorDivision, Flag = false });
-            //controls.Add(new TaskControls { control = cbAuthorService, Flag = false });
-            //controls.Add(new TaskControls { control = cbAuthorDepartment, Flag = false });
-            //controls.Add(new TaskControls { control = cbEventType, Flag = false });
-            //controls.Add(new TaskControls { control = cbEventIdentifierType, Flag = false });
-            //controls.Add(new TaskControls { control = tbEventIdentifierPoint, Flag = false });
-            //controls.Add(new TaskControls { control = cbEventPlace, Flag = false });
-            //controls.Add(new TaskControls { control = tbEventCount, Flag = false });
-            //controls.Add(new TaskControls { control = dtEventStartDT, Flag = false });
-            //controls.Add(new TaskControls { control = tbEventPurpose, Flag = false });
-            //controls.Add(new TaskControls { control = tbEventOrient, Flag = false });
-            //controls.Add(new TaskControls { control = tbEventReferenceNo, Flag = false });
-            //controls.Add(new TaskControls { control = cbEventLongStorage, Flag = false });
-            //controls.Add(new TaskControls { control = tbAccessoryOwnerFullName, Flag = false });
-            //controls.Add(new TaskControls { control = tbAccessoryOwnerAddress, Flag = false });
-            //controls.Add(new TaskControls { control = dtAccessoryOwnerBirthDT, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseCourt, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseJudge, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseResolutionNo, Flag = false });
-            //controls.Add(new TaskControls { control = dtBaseResolutionStartDT, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseResolutionCount, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseNotificationCourt, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseNotificationJudge, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseNotificationNo, Flag = false });
-            //controls.Add(new TaskControls { control = dtBaseNotificationStartDT, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseCaseTypeFirst, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseCaseNameFirst, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseCaseNoFirst, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseCaseArticleNoFirst, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseCaseTypeSecond, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseCaseNameSecond, Flag = false });
-            //controls.Add(new TaskControls { control = tbBaseCaseNoSecond, Flag = false });
-            //controls.Add(new TaskControls { control = cbBaseCaseArticleNoSecond, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectSurname, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectName, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectSecondName, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectWorkPosition, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectWorkName, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectWorkAddress, Flag = false });
-            //controls.Add(new TaskControls { control = tbObjectHomeAddress, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorEvent, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorObject, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorCrimeSubject, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorCrimeItem, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorCrimeTarget, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorCrimePlace, Flag = false });
-            //controls.Add(new TaskControls { control = cbColorRoleObject, Flag = false });
-            //controls.Add(new TaskControls { control = ccbColorPattern, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentSerialNo, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentWorkStation, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentAuthor, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentAuthorPhone, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentPrivacyRank, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentOrderNo, Flag = false });
-            //controls.Add(new TaskControls { control = tbDocumentPageCount, Flag = false });
-            //controls.Add(new TaskControls { control = dtDocumentDoneDT, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadApproveSurname, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadApproveName, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadApproveSecondName, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadApprovePosition, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadApproveTitle, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptSurname, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptName, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptSecondName, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptPosition, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptTitle, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptDivision, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAcceptService, Flag = false });
+            controls.Add(new TaskControls { control = tbHeadAuthorSurname, Flag = false });
+            controls.Add(new TaskControls { control = tbHeadAuthorName, Flag = false });
+            controls.Add(new TaskControls { control = tbHeadAuthorSecondName, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAuthorPosition, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAuthorTitle, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAuthorDivision, Flag = false });
+            controls.Add(new TaskControls { control = cbHeadAuthorService, Flag = false });
+            controls.Add(new TaskControls { control = tbAuthorSurname, Flag = false });
+            controls.Add(new TaskControls { control = tbAuthorName, Flag = false });
+            controls.Add(new TaskControls { control = tbAuthorSecondName, Flag = false });
+            controls.Add(new TaskControls { control = cbAuthorPosition, Flag = false });
+            controls.Add(new TaskControls { control = cbAuthorTitle, Flag = false });
+            controls.Add(new TaskControls { control = tbAuthorPhone, Flag = false });
+            controls.Add(new TaskControls { control = cbAuthorDivision, Flag = false });
+            controls.Add(new TaskControls { control = cbAuthorService, Flag = false });
+            controls.Add(new TaskControls { control = cbAuthorDepartment, Flag = false });
+            controls.Add(new TaskControls { control = cbEventType, Flag = false });
+            controls.Add(new TaskControls { control = cbEventIdentifierType, Flag = false });
+            controls.Add(new TaskControls { control = tbEventIdentifierPoint, Flag = false });
+            if (!MainForm.mainForm.IsAdmin)
+            {
+                controls.Add(new TaskControls { control = cbEventPlace, Flag = false });
+                controls.Add(new TaskControls { control = tbEventCount, Flag = false });
+                controls.Add(new TaskControls { control = dtEventStartDT, Flag = false });
+                controls.Add(new TaskControls { control = tbEventPurpose, Flag = false });
+                controls.Add(new TaskControls { control = tbEventOrient, Flag = false });
+                controls.Add(new TaskControls { control = tbEventReferenceNo, Flag = false });
+                controls.Add(new TaskControls { control = cbEventLongStorage, Flag = false });
+                controls.Add(new TaskControls { control = tbAccessoryOwnerFullName, Flag = false });
+                controls.Add(new TaskControls { control = tbAccessoryOwnerAddress, Flag = false });
+                controls.Add(new TaskControls { control = dtAccessoryOwnerBirthDT, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseCourt, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseJudge, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseResolutionNo, Flag = false });
+                controls.Add(new TaskControls { control = dtBaseResolutionStartDT, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseResolutionCount, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseNotificationCourt, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseNotificationJudge, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseNotificationNo, Flag = false });
+                controls.Add(new TaskControls { control = dtBaseNotificationStartDT, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseCaseTypeFirst, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseCaseNameFirst, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseCaseNoFirst, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseCaseArticleNoFirst, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseCaseTypeSecond, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseCaseNameSecond, Flag = false });
+                controls.Add(new TaskControls { control = tbBaseCaseNoSecond, Flag = false });
+                controls.Add(new TaskControls { control = cbBaseCaseArticleNoSecond, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectSurname, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectName, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectSecondName, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectWorkPosition, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectWorkName, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectWorkAddress, Flag = false });
+                controls.Add(new TaskControls { control = tbObjectHomeAddress, Flag = false });
+                controls.Add(new TaskControls { control = cbColorEvent, Flag = false });
+                controls.Add(new TaskControls { control = cbColorObject, Flag = false });
+                controls.Add(new TaskControls { control = cbColorCrimeSubject, Flag = false });
+                controls.Add(new TaskControls { control = cbColorCrimeItem, Flag = false });
+                controls.Add(new TaskControls { control = cbColorCrimeTarget, Flag = false });
+                controls.Add(new TaskControls { control = cbColorCrimePlace, Flag = false });
+                controls.Add(new TaskControls { control = cbColorRoleObject, Flag = false });
+                controls.Add(new TaskControls { control = ccbColorPattern, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentSerialNo, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentWorkStation, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentAuthor, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentAuthorPhone, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentPrivacyRank, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentOrderNo, Flag = false });
+                controls.Add(new TaskControls { control = tbDocumentPageCount, Flag = false });
+                controls.Add(new TaskControls { control = dtDocumentDoneDT, Flag = false });
+            }
         }
 
         public bool ValidateTaskFields(List<TaskControls> controls)

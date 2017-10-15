@@ -90,6 +90,8 @@ namespace Задание
             {
                 taskModeForm.ShowDialog();
             }
+
+            this.Focus();
         }
 
         public MainForm(Thread t, XtraForm modeForm)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -264,7 +265,7 @@
             this.tbDocumentPageCount = new DevExpress.XtraEditors.TextEdit();
             this.tbDocumentOrderNo = new DevExpress.XtraEditors.TextEdit();
             this.labelControl87 = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.navigationTask)).BeginInit();
             this.navigationTask.SuspendLayout();
             this.navigationPage1.SuspendLayout();
@@ -2992,6 +2993,7 @@
             this.ccbColorPattern.Size = new System.Drawing.Size(316, 20);
             this.ccbColorPattern.TabIndex = 3;
             this.ccbColorPattern.Popup += new System.EventHandler(this.ccbColorPattern_Popup);
+            this.ccbColorPattern.EditValueChanged += new System.EventHandler(this.ccbColorPattern_EditValueChanged);
             // 
             // labelControl33
             // 
@@ -3036,7 +3038,6 @@
             // 
             // navigationPage4
             // 
-            this.navigationPage4.Caption = "navigationPage4";
             this.navigationPage4.Controls.Add(this.splitContainer9);
             this.navigationPage4.Controls.Add(this.labelControl87);
             this.navigationPage4.Name = "navigationPage4";

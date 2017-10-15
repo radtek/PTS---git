@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScanControl));
             this.panelBottom = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -36,8 +35,8 @@
             this.btnOpenQR = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.timer = new System.Windows.Forms.Timer();
             this.tbBlankNo = new DevExpress.XtraEditors.TextEdit();
             this.tbTaskNo = new DevExpress.XtraEditors.TextEdit();
             this.tbCommissionNo = new DevExpress.XtraEditors.TextEdit();
@@ -137,6 +136,7 @@
             this.simpleButton2.Size = new System.Drawing.Size(75, 53);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "simpleButton1";
+            this.simpleButton2.Visible = false;
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
@@ -147,6 +147,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(75, 53);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "simpleButton1";
+            this.simpleButton1.Visible = false;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnOpenQR
@@ -159,6 +160,7 @@
             this.btnOpenQR.Size = new System.Drawing.Size(96, 53);
             this.btnOpenQR.TabIndex = 0;
             this.btnOpenQR.Text = "Открыть";
+            this.btnOpenQR.Visible = false;
             this.btnOpenQR.Click += new System.EventHandler(this.btnOpenQR_Click);
             // 
             // btnCancel
@@ -423,7 +425,7 @@
             this.gridControlTask.Location = new System.Drawing.Point(0, 25);
             this.gridControlTask.MainView = this.gridViewTask;
             this.gridControlTask.Name = "gridControlTask";
-            this.gridControlTask.Size = new System.Drawing.Size(526, 265);
+            this.gridControlTask.Size = new System.Drawing.Size(533, 265);
             this.gridControlTask.TabIndex = 24;
             this.gridControlTask.TabStop = false;
             this.gridControlTask.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -475,7 +477,7 @@
             this.tbReference.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbReference.Location = new System.Drawing.Point(0, 25);
             this.tbReference.Name = "tbReference";
-            this.tbReference.Size = new System.Drawing.Size(526, 269);
+            this.tbReference.Size = new System.Drawing.Size(533, 276);
             this.tbReference.TabIndex = 24;
             this.tbReference.TabStop = false;
             // 
@@ -748,7 +750,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.tbReference);
             this.splitContainer2.Panel2.Controls.Add(this.labelControl9);
             this.splitContainer2.Panel2.Text = "Panel2";
-            this.splitContainer2.Size = new System.Drawing.Size(526, 596);
+            this.splitContainer2.Size = new System.Drawing.Size(533, 596);
             this.splitContainer2.SplitterPosition = 290;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.Text = "splitContainerControl1";
@@ -846,10 +848,10 @@
         private DevExpress.XtraEditors.ComboBoxEdit cbProlongationYear;
         private DevExpress.XtraEditors.LabelControl labelProlongationStat;
         public DevExpress.XtraEditors.DateEdit dtProlongationDt;
-        private DevExpress.XtraEditors.SimpleButton btnOpenQR;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         public System.Windows.Forms.Timer timer;
+        public DevExpress.XtraEditors.SimpleButton btnOpenQR;
+        public DevExpress.XtraEditors.SimpleButton simpleButton1;
+        public DevExpress.XtraEditors.SimpleButton simpleButton2;
 
 
     }

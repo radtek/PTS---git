@@ -153,10 +153,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlankControl.cs">
+    <Compile Include="Modules\BlankControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BlankControl.Designer.cs">
+    <Compile Include="Modules\BlankControl.Designer.cs">
       <DependentUpon>BlankControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Address.cs" />
@@ -358,7 +358,7 @@
     <Compile Include="Common\TaskModeForm.Designer.cs">
       <DependentUpon>TaskModeForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BlankControl.resx">
+    <EmbeddedResource Include="Modules\BlankControl.resx">
       <DependentUpon>BlankControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\AddressForm.resx">

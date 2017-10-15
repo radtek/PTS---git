@@ -20,9 +20,15 @@ namespace Прием
         public string ConnectionPTS = "";
         #endregion
 
-        public MainForm(Thread t)
+        public MainForm(Thread t, int IsDeveloper)
         {
             LoadSettings();
+            if (IsDeveloper == 1)
+            {
+                ScanControl.scanControl.btnOpenQR.Visible = true;
+                ScanControl.scanControl.simpleButton1.Visible = true;
+                ScanControl.scanControl.simpleButton2.Visible = true;
+            }
             InitializeComponent();
             mainForm = this;
             try
