@@ -531,27 +531,42 @@ namespace Задание
         #region "Reference Controls"
         private void btnRefPreview_Click(object sender, EventArgs e)
         {
+            MainForm.mainForm.CheckTempFolder();
+
             if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 1) // Если выбрана справка об объекте
             {
                 Reference.reference.UpdateForValidate();
                 if (Reference.reference.ValidateReferenceFields(Reference.reference.controls))
                 {
                     Thread t = new Thread(new ThreadStart(SplashScreen));
-                    t.Start();
-                    Thread.Sleep(1000);
-                    if (Preview.preview.pdfViewer.Document != null)
+                    try
                     {
-                        Preview.preview.pdfViewer.Document.Dispose();
+                        t.Start();
+                        Thread.Sleep(1000);
+                        if (Preview.preview.pdfViewer.Document != null)
+                        {
+                            Preview.preview.pdfViewer.Document.Dispose();
+                        }
+                        Reference.reference.InsertDocX(1, Reference.reference.TotalDivisions);
+                        Reference.reference.CreateReferenceDocument();
+                        MergeDocuments();
+                        Preview.preview.DocFile = Application.StartupPath + "\\Temp\\tmp3.docx";
+                        Preview.preview.ShowPreview(1);
+                        btnTaskMode.Enabled = false;
+                        MainForm.mainForm.navigationBar.Enabled = false;
+                        NavigationPanel.navigationPanel.navigation.SelectedPageIndex = 2;
+                        if (t.IsAlive)
+                            Thread.Sleep(10);
+                        t.Abort();
                     }
-                    Reference.reference.InsertDocX(1, Reference.reference.TotalDivisions);
-                    Reference.reference.CreateReferenceDocument();
-                    MergeDocuments();
-                    Preview.preview.DocFile = Application.StartupPath + "\\Temp\\tmp3.docx";
-                    Preview.preview.ShowPreview(1);
-                    btnTaskMode.Enabled = false;
-                    MainForm.mainForm.navigationBar.Enabled = false;
-                    NavigationPanel.navigationPanel.navigation.SelectedPageIndex = 2;
-                    t.Abort();
+                    catch (ThreadAbortException ex)
+                    {
+                        errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                    }
+                    finally
+                    {
+                        t.Join();
+                    }
                 }
                 else
                 {
@@ -562,12 +577,53 @@ namespace Задание
 
         private void btnRefPrint_Click(object sender, EventArgs e)
         {
+            MainForm.mainForm.CheckTempFolder();
+
             if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 1) // Если выбрана справка об объекте
             {
                 Reference.reference.UpdateForValidate();
                 if (Reference.reference.ValidateReferenceFields(Reference.reference.controls))
                 {
                     Thread t = new Thread(new ThreadStart(SplashPrinting));
+                    try
+                    {
+                        t.Start();
+                        Thread.Sleep(1000);
+                        for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
+                        {
+                            Reference.reference.InsertDocX(i, Reference.reference.TotalDivisions);
+                            Document doc = new Document();
+                            doc.LoadFromFile(Application.StartupPath + "\\Temp\\tmp.docx");
+                            PrintDialog dialog = new PrintDialog();
+                            doc.PrintDialog = dialog;
+                            PrintDocument printDoc = doc.PrintDocument;
+                            printDoc.PrintController = new StandardPrintController();
+                            printDoc.Print();
+                            DeleteTemp();
+                        }
+                        if (t.IsAlive)
+                            Thread.Sleep(10);
+                        t.Abort();
+                    }
+                    catch (ThreadAbortException ex)
+                    {
+                        errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                    }
+                    finally
+                    {
+                        t.Join();
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Заполните все необходимые поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 2) // Если выбран предпросмотр
+            {
+                Thread t = new Thread(new ThreadStart(SplashPrinting));
+                try
+                {
                     t.Start();
                     Thread.Sleep(1000);
                     for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
@@ -580,9 +636,60 @@ namespace Задание
                         PrintDocument printDoc = doc.PrintDocument;
                         printDoc.PrintController = new StandardPrintController();
                         printDoc.Print();
-                        DeleteTemp();
                     }
+                    if (t.IsAlive)
+                        Thread.Sleep(10);
                     t.Abort();
+                }
+                catch (ThreadAbortException ex)
+                {
+                    errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                }
+                finally
+                {
+                    t.Join();
+                }
+            }
+        }
+
+        private void btnRefDocumentPrint_Click(object sender, EventArgs e)
+        {
+            MainForm.mainForm.CheckTempFolder();
+
+            if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 1) // Если выбрана справка об объекте
+            {
+                Reference.reference.UpdateForValidate();
+                if (Reference.reference.ValidateReferenceFields(Reference.reference.controls))
+                {
+                    Thread t = new Thread(new ThreadStart(SplashPrinting));
+                    try
+                    {
+                        t.Start();
+                        Thread.Sleep(1000);
+                        Reference.reference.CreateReferenceDocument();
+                        for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
+                        {
+                            Document doc = new Document();
+                            doc.LoadFromFile(Application.StartupPath + "\\Temp\\tmp2.docx");
+                            PrintDialog dialog = new PrintDialog();
+                            doc.PrintDialog = dialog;
+                            PrintDocument printDoc = doc.PrintDocument;
+                            printDoc.PrintController = new StandardPrintController();
+                            printDoc.Print();
+                        }
+                        DeleteTemp();
+                        if (t.IsAlive)
+                            Thread.Sleep(10);
+                        t.Abort();
+                    }
+                    catch (ThreadAbortException ex)
+                    {
+                        errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                    }
+                    finally
+                    {
+                        t.Join();
+                    }
                 }
                 else
                 {
@@ -592,34 +699,10 @@ namespace Задание
             else if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 2) // Если выбран предпросмотр
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
-                t.Start();
-                Thread.Sleep(1000);
-                for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
+                try
                 {
-                    Reference.reference.InsertDocX(i, Reference.reference.TotalDivisions);
-                    Document doc = new Document();
-                    doc.LoadFromFile(Application.StartupPath + "\\Temp\\tmp.docx");
-                    PrintDialog dialog = new PrintDialog();
-                    doc.PrintDialog = dialog;
-                    PrintDocument printDoc = doc.PrintDocument;
-                    printDoc.PrintController = new StandardPrintController();
-                    printDoc.Print();
-                }
-                t.Abort();
-            }
-        }
-
-        private void btnRefDocumentPrint_Click(object sender, EventArgs e)
-        {
-            if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 1) // Если выбрана справка об объекте
-            {
-                Reference.reference.UpdateForValidate();
-                if (Reference.reference.ValidateReferenceFields(Reference.reference.controls))
-                {
-                    Thread t = new Thread(new ThreadStart(SplashPrinting));
                     t.Start();
                     Thread.Sleep(1000);
-                    Reference.reference.CreateReferenceDocument();
                     for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
                     {
                         Document doc = new Document();
@@ -630,30 +713,18 @@ namespace Задание
                         printDoc.PrintController = new StandardPrintController();
                         printDoc.Print();
                     }
-                    DeleteTemp();
+                    if (t.IsAlive)
+                        Thread.Sleep(10);
                     t.Abort();
                 }
-                else
+                catch (ThreadAbortException ex)
                 {
-                    XtraMessageBox.Show("Заполните все необходимые поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
                 }
-            }
-            else if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 2) // Если выбран предпросмотр
-            {
-                Thread t = new Thread(new ThreadStart(SplashPrinting));
-                t.Start();
-                Thread.Sleep(1000);
-                for (int i = 1; i <= Reference.reference.TotalDivisions; i++)
+                finally
                 {
-                    Document doc = new Document();
-                    doc.LoadFromFile(Application.StartupPath + "\\Temp\\tmp2.docx");
-                    PrintDialog dialog = new PrintDialog();
-                    doc.PrintDialog = dialog;
-                    PrintDocument printDoc = doc.PrintDocument;
-                    printDoc.PrintController = new StandardPrintController();
-                    printDoc.Print();
+                    t.Join();
                 }
-                t.Abort();
             }
         }
 
@@ -680,14 +751,16 @@ namespace Задание
         #region "Task Controls"
         private void btnTaskPreview_Click(object sender, EventArgs e)
         {
+            MainForm.mainForm.CheckTempFolder();
+
             if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 0) // Если выбрано задание
             {
                 Task.task.UpdateForValidate();
                 if (Task.task.ValidateTaskFields(Task.task.controls))
                 {
+                    Thread t = new Thread(new ThreadStart(SplashScreen));
                     try
                     {
-                        Thread t = new Thread(new ThreadStart(SplashScreen));
                         t.Start();
                         Thread.Sleep(1000);
                         if (Preview.preview.pdfViewer.Document != null)
@@ -701,11 +774,17 @@ namespace Задание
                         btnTaskMode.Enabled = false;
                         MainForm.mainForm.navigationBar.Enabled = false;
                         NavigationPanel.navigationPanel.navigation.SelectedPageIndex = 2;
+                        if (t.IsAlive)
+                            Thread.Sleep(10);
                         t.Abort();
                     }
                     catch (ThreadAbortException ex)
                     {
-                        XtraMessageBox.Show(ex.Message.ToString());
+                        errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                    }
+                    finally
+                    {
+                        t.Join();
                     }
                 }
                 else
@@ -717,17 +796,32 @@ namespace Задание
 
         private void btnTaskPrint_Click(object sender, EventArgs e)
         {
+            MainForm.mainForm.CheckTempFolder();
+
             if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 0) // Если выбрано задание
             {
                 Task.task.UpdateForValidate();
                 if (Task.task.ValidateTaskFields(Task.task.controls))
                 {
                     Thread t = new Thread(new ThreadStart(SplashScreen));
-                    t.Start();
-                    Thread.Sleep(1000);
-                    Task.task.UpdateFields();
-                    Task.task.UpdateDoc();
-                    t.Abort();
+                    try
+                    {
+                        t.Start();
+                        Thread.Sleep(1000);
+                        Task.task.UpdateFields();
+                        Task.task.UpdateDoc();
+                        if (t.IsAlive)
+                            Thread.Sleep(10);
+                        t.Abort();
+                    }
+                    catch (ThreadAbortException ex)
+                    {
+                        errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                    }
+                    finally
+                    {
+                        t.Join();
+                    }
 
                     Document doc = new Document();
                     doc.LoadFromFile(Application.StartupPath + "\\Temp\\tmp.docx");
@@ -768,24 +862,39 @@ namespace Задание
         #region "Report Controls"
         private void btnPreviewReport_Click(object sender, EventArgs e)
         {
+            MainForm.mainForm.CheckTempFolder();
+
             if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 4) // Если выбран отчет
             {
                 if (Report.report.gridView.RowCount > 0)
                 {
                     Thread t = new Thread(new ThreadStart(SplashScreen));
-                    t.Start();
-                    Thread.Sleep(1000);
-                    if (Preview.preview.pdfViewer.Document != null)
+                    try
                     {
-                        Preview.preview.pdfViewer.Document.Dispose();
+                        t.Start();
+                        Thread.Sleep(1000);
+                        if (Preview.preview.pdfViewer.Document != null)
+                        {
+                            Preview.preview.pdfViewer.Document.Dispose();
+                        }
+                        Report.report.CreateDoc();
+                        //Preview.preview.DocFile = Application.StartupPath + "\\Temp\\report.rtf";
+                        Preview.preview.ShowReportPreview(4);
+                        btnTaskMode.Enabled = false;
+                        MainForm.mainForm.navigationBar.Enabled = false;
+                        NavigationPanel.navigationPanel.navigation.SelectedPageIndex = 2;
+                        if (t.IsAlive)
+                            Thread.Sleep(10);
+                        t.Abort();
                     }
-                    Report.report.CreateDoc();
-                    //Preview.preview.DocFile = Application.StartupPath + "\\Temp\\report.rtf";
-                    Preview.preview.ShowReportPreview(4);
-                    btnTaskMode.Enabled = false;
-                    MainForm.mainForm.navigationBar.Enabled = false;
-                    NavigationPanel.navigationPanel.navigation.SelectedPageIndex = 2;
-                    t.Abort();
+                    catch (ThreadAbortException ex)
+                    {
+                        errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                    }
+                    finally
+                    {
+                        t.Join();
+                    }
                 }
                 else
                 {
@@ -796,45 +905,73 @@ namespace Задание
 
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
+            MainForm.mainForm.CheckTempFolder();
+
             if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 4) // Если выбран отчет
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
-                t.Start();
-                Thread.Sleep(1000);
-                if (Preview.preview.pdfViewer.Document != null)
+                try
                 {
-                    Preview.preview.pdfViewer.Document.Dispose();
+                    t.Start();
+                    Thread.Sleep(1000);
+                    if (Preview.preview.pdfViewer.Document != null)
+                    {
+                        Preview.preview.pdfViewer.Document.Dispose();
+                    }
+                    Report.report.CreatePdf();
+                    Document docReport = new Document();
+                    docReport.LoadFromFile(Application.StartupPath + "\\Data\\Templates\\report.docx");
+                    PrintDialog dialogReport = new PrintDialog();
+                    docReport.PrintDialog = dialogReport;
+                    PrintDocument printDocReport = docReport.PrintDocument;
+                    printDocReport.PrintController = new StandardPrintController();
+                    printDocReport.Print();
+                    Report.report.PrintPdf();
+                    DeleteTemp();
+                    if (t.IsAlive)
+                        Thread.Sleep(10);
+                    t.Abort();
                 }
-                Report.report.CreatePdf();
-                Document docReport = new Document();
-                docReport.LoadFromFile(Application.StartupPath + "\\Data\\Templates\\report.docx");
-                PrintDialog dialogReport = new PrintDialog();
-                docReport.PrintDialog = dialogReport;
-                PrintDocument printDocReport = docReport.PrintDocument;
-                printDocReport.PrintController = new StandardPrintController();
-                printDocReport.Print();
-                Report.report.PrintPdf();
-                DeleteTemp();
-                t.Abort();
+                catch (ThreadAbortException ex)
+                {
+                    errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                }
+                finally
+                {
+                    t.Join();
+                }
             }
             else if (NavigationPanel.navigationPanel.navigation.SelectedPageIndex == 2) // Если выбран предпросмотр
             {
                 Thread t = new Thread(new ThreadStart(SplashPrinting));
-                t.Start();
-                Thread.Sleep(1000);
-                if (Preview.preview.pdfViewer.Document != null)
+                try
                 {
-                    Preview.preview.pdfViewer.Document.Dispose();
+                    t.Start();
+                    Thread.Sleep(1000);
+                    if (Preview.preview.pdfViewer.Document != null)
+                    {
+                        Preview.preview.pdfViewer.Document.Dispose();
+                    }
+                    Document docReport = new Document();
+                    docReport.LoadFromFile(Application.StartupPath + "\\Data\\Templates\\report.docx");
+                    PrintDialog dialogReport = new PrintDialog();
+                    docReport.PrintDialog = dialogReport;
+                    PrintDocument printDocReport = docReport.PrintDocument;
+                    printDocReport.PrintController = new StandardPrintController();
+                    printDocReport.Print();
+                    Preview.preview.PrintPdf();
+                    if (t.IsAlive)
+                        Thread.Sleep(10);
+                    t.Abort();
                 }
-                Document docReport = new Document();
-                docReport.LoadFromFile(Application.StartupPath + "\\Data\\Templates\\report.docx");
-                PrintDialog dialogReport = new PrintDialog();
-                docReport.PrintDialog = dialogReport;
-                PrintDocument printDocReport = docReport.PrintDocument;
-                printDocReport.PrintController = new StandardPrintController();
-                printDocReport.Print();
-                Preview.preview.PrintPdf();
-                t.Abort();
+                catch (ThreadAbortException ex)
+                {
+                    errorCollector.ApplicationEvent(0, 1, ex.Message, "", true);
+                }
+                finally
+                {
+                    t.Join();
+                }
             }
         }
         #endregion

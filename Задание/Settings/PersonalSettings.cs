@@ -485,7 +485,10 @@ namespace Задание
                     BaseEventSettings.baseEventSettings.recentItemControl.Appearances.RecentItemControl.BackColor = Color.FromArgb(38, 38, 38);
                     BlankControl.blankControl.recentItemControl.Appearances.RecentItemControl.BackColor = Color.FromArgb(38, 38, 38);
 
+                    if (thread.IsAlive)
+                        Thread.Sleep(10);
                     thread.Abort();
+                    thread.Join();
                 }
                 catch (ThreadAbortException ex)
                 {
@@ -509,7 +512,10 @@ namespace Задание
                     BaseEventSettings.baseEventSettings.recentItemControl.Appearances.RecentItemControl.BackColor = Color.DimGray;
                     BlankControl.blankControl.recentItemControl.Appearances.RecentItemControl.BackColor = Color.DimGray;
 
+                    if (thread.IsAlive)
+                        Thread.Sleep(10);
                     thread.Abort();
+                    thread.Join();
                 }
                 catch (ThreadAbortException ex)
                 {
@@ -533,7 +539,10 @@ namespace Задание
                     BaseEventSettings.baseEventSettings.recentItemControl.Appearances.RecentItemControl.BackColor = Color.FromArgb(240, 240, 240);
                     BlankControl.blankControl.recentItemControl.Appearances.RecentItemControl.BackColor = Color.FromArgb(240, 240, 240);
 
+                    if (thread.IsAlive)
+                        Thread.Sleep(10);
                     thread.Abort();
+                    thread.Join();
                 }
                 catch (ThreadAbortException ex)
                 {
@@ -557,7 +566,10 @@ namespace Задание
                     BaseEventSettings.baseEventSettings.recentItemControl.Appearances.RecentItemControl.BackColor = Color.FromArgb(241, 241, 241);
                     BlankControl.blankControl.recentItemControl.Appearances.RecentItemControl.BackColor = Color.FromArgb(241, 241, 241);
 
+                    if (thread.IsAlive)
+                        Thread.Sleep(10);
                     thread.Abort();
+                    thread.Join();
                 }
                 catch (ThreadAbortException ex)
                 {

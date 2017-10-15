@@ -31,6 +31,7 @@ namespace Задание
                 var taskMode = new TaskModeForm();
                 var mainForm = new MainForm(thread, taskMode); // Вызываем новую основную форму и передаем в нее текущий поток                
                 var loginForm = new LoginForm(mainForm); // Вызываем новую логин форму
+                mainForm.CheckTempFolder();
                 PersonalSettings.personalSettings.LoadData();
                 BaseEventSettings.baseEventSettings.LoadData();
                 ControlPanel.controlPanel.GetCurrentTaskNumber(); // Получаем 

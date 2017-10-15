@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -124,6 +125,14 @@ namespace Задание
             NavigationBar.navigationBar.NavigationMain.Groups[0].SelectedLinkIndex = 0;
             NavigationPanel.navigationPanel.navigation.SelectedPageIndex = 0;
             //TODO: Открыть 1 страницу заполнения задания
+        }
+
+        public void CheckTempFolder()
+        {
+            if (!Directory.Exists(Application.StartupPath + "\\Temp"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\Temp");
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
